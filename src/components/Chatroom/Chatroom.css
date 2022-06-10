@@ -1,0 +1,25 @@
+.message {
+    width: fit-content;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+    margin: 8px;
+    display: flex;
+    background-color: white;
+}
+
+.message-content {
+    margin-right: 8px;
+}
+
+.date-content {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 8px;
+    align-self: flex-end;
+}
+
+.self {
+    align-self: end;
+    background: #b7ecb7;
+}

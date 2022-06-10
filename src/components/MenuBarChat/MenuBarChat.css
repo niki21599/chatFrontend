@@ -1,0 +1,18 @@
+.space-left-chat {
+    left: 300px !important;
+    width: 450px !important;
+}
+
+@media (min-width: 750px) {
+    .space-left-chat {
+        left: 300px !important;
+        width: calc(100vw - 300px) !important;
+    }
+}
+
+@media (min-width: 1000px) {
+    .space-left-chat {
+        left: 30vw !important;
+        width: 70vw !important;
+    }
+}

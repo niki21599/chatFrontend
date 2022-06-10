@@ -1,0 +1,16 @@
+.img-noChats {
+    height: 250px;
+    width: 250px;
+    color: #000;
+    animation: rotation 8s infinite linear;
+    background: transparent;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}

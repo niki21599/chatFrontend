@@ -1,0 +1,4 @@
+.wholeContainer {
+    display: grid;
+    grid-template-columns: minmax(300px, 30%) minmax(450px, 70%);
+}
