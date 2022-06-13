@@ -11,7 +11,6 @@ function App() {
   };
   let [loggedIn, setLoggedIn] = React.useState(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     return token !== null;
   });
 

@@ -1,6 +1,3 @@
-let token = "2ab5580c215c6cabe52e8358f4b402f2af1d3646";
-
-// Login
 export async function login(username, password) {
   let formData = new FormData();
   formData.append("username", username);
@@ -11,11 +8,9 @@ export async function login(username, password) {
     body: formData,
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
-//Register
 export async function register(
   username,
   password,
@@ -37,7 +32,6 @@ export async function register(
     body: formData,
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -50,7 +44,6 @@ export async function getChats() {
     },
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -66,7 +59,6 @@ export async function getMessages(chat_id) {
     }
   );
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -83,7 +75,6 @@ export async function postChat(user_id) {
     body: formData,
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -101,7 +92,6 @@ export async function postMessage(chat_id, message) {
     body: formData,
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -114,7 +104,6 @@ export async function getUsersWithoutChat() {
     },
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -130,7 +119,6 @@ export async function getUserDetail(user_ids) {
     }
   );
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -146,7 +134,6 @@ export async function getLastMessages(chat_ids) {
     }
   );
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }
 
@@ -159,6 +146,5 @@ export async function getUserId() {
     },
   });
   let result = await response.json();
-  console.log("Response", result);
   return result;
 }

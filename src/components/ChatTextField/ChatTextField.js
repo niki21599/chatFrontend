@@ -15,7 +15,6 @@ export default function ChatTextField(props) {
     postMessage(props.chat_id, message).then((result) => {
       let newMessages = [...props.messages];
       newMessages.push(result[0]);
-      console.log("New Messages", newMessages);
       props.setMessages(newMessages);
       setMessage("");
     });

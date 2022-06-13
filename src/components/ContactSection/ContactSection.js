@@ -7,7 +7,6 @@ import ContactList from "../ContactList/ContactList";
 export default function ContactSection(props) {
   let [searchTerm, setSearchTerm] = React.useState("");
   let search = (query) => {
-    console.log(query);
     setSearchTerm(query);
   };
 
@@ -17,14 +16,15 @@ export default function ContactSection(props) {
       <MenuBarContact
         logout={props.logout}
         chats={props.chats}
+        openChatWithId={props.openChatWithId}
         addChat={props.addChat}
+        openNewChat={props.openNewChat}
       />
       <SearchBar search={search} />
       <ContactList
         chats={props.chats}
         openChatWithId={props.openChatWithId}
         setUser={props.setUser}
-        messages={props.messages}
         searchTerm={searchTerm}
         user_id={props.user_id}
       />

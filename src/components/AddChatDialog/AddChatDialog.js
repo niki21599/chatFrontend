@@ -10,7 +10,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { getUsersWithoutChat } from "../../apiCalls";
 import { postChat } from "../../apiCalls";
 import { Divider, List, ListItem, ListItemText } from "@mui/material";
-import { getSuggestedQuery } from "@testing-library/react";
 
 export default function AddChatDialog(props) {
   let [users, setUsers] = useState([]);
@@ -21,7 +20,6 @@ export default function AddChatDialog(props) {
   useEffect(() => {
     getUsersWithoutChat().then((result) => {
       setUsers(result);
-      console.log("The ", result);
     });
   }, [props.chats]);
 
@@ -31,7 +29,9 @@ export default function AddChatDialog(props) {
 
   const addChat = (user_id) => {
     postChat(user_id).then((result) => {
-      props.addChat(result[0]);
+      let chat = result[0];
+      props.addChat(chat);
+      props.openNewChat(chat);
       handleClose();
     });
   };

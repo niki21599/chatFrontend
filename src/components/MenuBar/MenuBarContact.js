@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./MenuBarContact.css";
 
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -12,7 +12,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Avatar from "@mui/material/Avatar";
 import { deepOrange } from "@mui/material/colors";
 import AddChatDialog from "../AddChatDialog/AddChatDialog";
-import { postChat } from "../../apiCalls";
 
 export default function MenuBarContact(props) {
   let [openDialog, setOpenDialog] = useState(false);
@@ -64,6 +63,7 @@ export default function MenuBarContact(props) {
         chats={props.chats}
         addChat={props.addChat}
         openChatWithId={props.openChatWithId}
+        openNewChat={props.openNewChat}
       />
     </div>
   );

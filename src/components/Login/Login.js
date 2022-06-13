@@ -9,24 +9,15 @@ import { login } from "../../apiCalls";
 import { Navigate } from "react-router-dom";
 
 export default function Login(props) {
-  //   props:
-  // loggedIn
-  //     props.login
-  //
-  //
-  //
-  //
-  //
-
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [wrongData, setWrongData] = useState(false);
 
   let handleChange = (e) => {
     setWrongData(false);
-    if (e.currentTarget.id == "username") {
+    if (e.currentTarget.id === "username") {
       setUsername(e.currentTarget.value);
-    } else if (e.currentTarget.id == "password") {
+    } else if (e.currentTarget.id === "password") {
       setPassword(e.currentTarget.value);
     }
   };

@@ -20,30 +20,49 @@ export default function ContactList(props) {
   let [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    let user_ids = getUserIds();
+    let chat_ids = getChatIds();
+
+    let chatsExist = user_ids.length > 0;
+    if (chatsExist) {
+      loadUserDetails(user_ids);
+    }
+    if (chatsExist) {
+      loadLastMessages(chat_ids);
+    }
+  }, [props.chats]);
+
+  let loadUserDetails = (user_ids) => {
+    getUserDetail(user_ids).then((result) => {
+      setUsers(result);
+    });
+  };
+  let loadLastMessages = (chat_ids) => {
+    getLastMessages(chat_ids).then((result) => {
+      setMessages(result);
+    });
+  };
+
+  let getUserIds = () => {
     let user_ids = [];
-    let chat_ids = [];
     props.chats.forEach((chat) => {
       let user_id = getPkOfOtherUser(chat.fields.user_1, chat.fields.user_2);
       user_ids.push(user_id);
+    });
+    return user_ids;
+  };
+
+  let getChatIds = () => {
+    let chat_ids = [];
+    props.chats.forEach((chat) => {
       let chat_id = chat.pk;
       chat_ids.push(chat_id);
     });
-    if (user_ids.length > 0) {
-      getUserDetail(user_ids).then((result) => {
-        setUsers(result);
-      });
-    }
-    if (chat_ids.length > 0) {
-      getLastMessages(chat_ids).then((result) => {
-        setMessages(result);
-      });
-    }
-  }, [props.chats, props.messages]);
+    return chat_ids;
+  };
 
   let getPkOfOtherUser = (user_1, user_2) => {
-    //Somehow get the user_id
-
-    if (user_2 == props.user_id) {
+    if (user_2 === props.user_id) {
       return user_1;
     } else {
       return user_2;
@@ -51,7 +70,7 @@ export default function ContactList(props) {
   };
 
   let getUsername = (pk) => {
-    let [user] = users.filter((user) => user.pk == pk);
+    let [user] = users.filter((user) => user.pk === pk);
     if (user) {
       let first_name = user.fields.first_name;
       let last_name = user.fields.last_name;
@@ -60,19 +79,10 @@ export default function ContactList(props) {
       return "";
     }
   };
-  let getUser = (pk) => {
-    console.log("Getting the User with pk: ", pk);
-    let [user] = users.filter((user) => user.pk == pk);
-    console.log("the user", user);
-    if (user) {
-      return user;
-    } else {
-      return {};
-    }
-  };
+
   let getLastMessageFrom = (chat_id) => {
     let [message] = messages.filter(
-      (message) => message.fields.chat == chat_id
+      (message) => message.fields.chat === chat_id
     );
     if (message) {
       return message.fields.text;
@@ -126,11 +136,6 @@ export default function ContactList(props) {
                   alignItems="flex-start"
                   onClick={() => {
                     openChat(chat.pk);
-                    props.setUser(
-                      getUser(
-                        getPkOfOtherUser(chat.fields.user_1, chat.fields.user_2)
-                      )
-                    );
                   }}
                 >
                   <ListItemAvatar sx={{ mt: 0 }}>
